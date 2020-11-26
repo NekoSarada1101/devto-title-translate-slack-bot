@@ -1,5 +1,8 @@
 import feedparser
 from settings_secret import *
+from google.cloud import translate_v2 as translate
+
+translate_client = translate.Client.from_service_account_json("credentials.json")
 
 
 def fetch_rss():
@@ -14,6 +17,10 @@ def fetch_rss():
         text = text.replace("#DEVCommunity", "")
         text = text.replace(text[text.find("{ author"):text.rfind("}") + 1], "")
         text = text.replace(url, "")
+        # 翻訳
+        result = translate_client.translate(text, target_language="ja")  # type: dict
+        translated_text = result['translatedText']  # type: str
+        print(translated_text, url)
 
 
 if __name__ == '__main__':
