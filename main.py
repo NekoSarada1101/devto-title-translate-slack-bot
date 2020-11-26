@@ -1,4 +1,8 @@
+import json
+
 import feedparser
+import requests
+
 from settings_secret import *
 from google.cloud import translate_v2 as translate
 
@@ -21,6 +25,25 @@ def fetch_rss():
         result = translate_client.translate(text, target_language="ja")  # type: dict
         translated_text = result['translatedText']  # type: str
         print(translated_text, url)
+
+        data = {  # type: dict
+            "attachments": [
+                {
+                    "color": "35373B",
+                    "blocks": [
+                        {
+                            "type": "section",
+                            "text": {
+                                "type": "mrkdwn",
+                                "text": ":devto: *DEV Community*\n{}\n{}".format(translated_text, url)
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+        payload = json.dumps(data).encode("utf-8")  # type: json
+        requests.post(POSTED_IN_URL, payload)
 
 
 if __name__ == '__main__':
