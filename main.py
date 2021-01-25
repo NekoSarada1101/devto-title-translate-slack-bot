@@ -23,7 +23,7 @@ def do_post(request):
     text = text.replace(url, "")
 
     # 翻訳
-    result = translate_client.translate(text, target_language="ja")  # type: dict
+    result = translate_client.translate(text, target_language="ja")
     translated_text = result['translatedText']  # type: str
     print(translated_text)
 
@@ -34,9 +34,4 @@ def do_post(request):
         "unfurl_links": "true",
     }
     payload = json.dumps(data).encode("utf-8")  # type: json
-    requests.post(POSTED_IN_URL, payload)
-    return ""
-
-
-if __name__ == '__main__':
-    do_post()
+    requests.post(SLACK_WEBHOOK_URL, payload)
