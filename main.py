@@ -1,8 +1,6 @@
 import json
-
 import requests
-
-from settings_secret import *
+from settings import *
 from google.cloud import translate_v2 as translate
 
 translate_client = translate.Client.from_service_account_json("credentials.json")

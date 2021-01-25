@@ -258,5 +258,4 @@ pyvenv.cfg
 pip-selfcheck.json
 
 # custom
-settings_secret.py
 credentials.json
