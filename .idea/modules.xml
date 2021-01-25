@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../tweetTranslatePostBot/.idea/tweetTranslatePostBot.iml" filepath="$PROJECT_DIR$/../tweetTranslatePostBot/.idea/tweetTranslatePostBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/devto-title-translate-slack-bot.iml" filepath="$PROJECT_DIR$/.idea/devto-title-translate-slack-bot.iml" />
     </modules>
   </component>
 </project>
