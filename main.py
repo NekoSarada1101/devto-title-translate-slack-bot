@@ -12,7 +12,7 @@ def do_post(request):
 
     print("text={}, username={}".format(text, username))
 
-    if "RT" in text:
+    if "RT" in text or "@" in text:
         return
 
     # text内のurlを取得
