@@ -7,7 +7,7 @@
 [dev.to](https://dev.to/)
 の
 [公式Twitterアカウント](https://twitter.com/thepracticaldev)
-がツイートしている記事タイトルを翻訳してSlackに送信する。
+がツイートしている記事タイトルを翻訳してSlackで表示する。
 
 ## 開発環境
 
