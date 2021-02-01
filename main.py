@@ -34,4 +34,6 @@ def do_post(request):
         "unfurl_links": "true",
     }
     payload = json.dumps(data).encode("utf-8")  # type: json
-    requests.post(SLACK_WEBHOOK_URL, payload)
+    response = requests.post(SLACK_WEBHOOK_URL, payload)
+    print(response)
+    return response
