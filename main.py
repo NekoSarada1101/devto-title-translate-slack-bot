@@ -3,7 +3,7 @@ import requests
 from settings import *
 from google.cloud import translate_v2 as translate
 
-translate_client = translate.Client.from_service_account_json("credentials.json")
+translate_client = translate.Client()
 
 
 def do_post(request):
@@ -34,4 +34,6 @@ def do_post(request):
         "unfurl_links": "true",
     }
     payload = json.dumps(data).encode("utf-8")  # type: json
-    requests.post(SLACK_WEBHOOK_URL, payload)
+    response = requests.post(SLACK_WEBHOOK_URL, payload)
+    print(response)
+    return response
