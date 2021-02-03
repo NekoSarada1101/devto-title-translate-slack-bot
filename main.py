@@ -36,3 +36,4 @@ def do_post(request):
     payload = json.dumps(data).encode("utf-8")  # type: json
     response = requests.post(SLACK_WEBHOOK_URL, payload)
     print(response)
+    return "devto"
