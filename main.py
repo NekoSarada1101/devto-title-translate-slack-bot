@@ -13,7 +13,7 @@ def do_post(request):
     print("text={}, username={}".format(text, username))
 
     if "RT" in text or "@" in text:
-        return
+        return "devto"
 
     # text内のurlを取得
     url = text[text.find("https://t.co/"):len(text)]  # type: str
