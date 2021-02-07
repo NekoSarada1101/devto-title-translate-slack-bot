@@ -34,7 +34,7 @@
    ```bash
    httpsTrigger:
      securityLevel: SECURE_OPTIONAL
-     url: https://[REGION]-[PROJECT-NAME].cloudfunctions.net/[NAME] <-this
+     url: https://[REGION]-[PROJECT-NAME].cloudfunctions.net/[NAME] ←this
    ```
 
 5. IFTTTでAppletsを作成する。  
