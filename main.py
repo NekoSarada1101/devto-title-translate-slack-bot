@@ -7,8 +7,11 @@ translate_client = translate.Client()
 
 
 def do_post(request):
-    text = request.form.get('text')  # type: str
     username = request.form.get('username')  # type: str
+    image = request.form.get('image')  # type: str
+    text = request.form.get('text')  # type: str
+    mention = request.form.get('mention')  # type: str
+    retweet = request.form.get('retweet')  # type: str
 
     print("text={}, username={}".format(text, username))
 
@@ -27,10 +30,8 @@ def do_post(request):
     translated_text = result['translatedText']  # type: str
     print(translated_text)
 
-    icon_name = ":devto:"
-
     data = {  # type: dict
-        "text": "{} *{}*\n{}\n{}".format(icon_name, username, translated_text, url),
+        "text": "{} *{}*\n{}\n{}".format(image, username, translated_text, url),
         "unfurl_links": "true",
     }
     payload = json.dumps(data).encode("utf-8")  # type: json
