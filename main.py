@@ -12,8 +12,12 @@ def do_post(request):
     text = request.form.get('text')  # type: str
     mention = request.form.get('mention')  # type: str
     retweet = request.form.get('retweet')  # type: str
+    print("username=" + username)
+    print("image=" + image)
+    print("text=" + text)
+    print("mention=" + mention)
+    print("retweet=" + retweet)
 
-    print("text={}, username={}".format(text, username))
 
     if "RT" in text or "@" in text:
         return "devto"
