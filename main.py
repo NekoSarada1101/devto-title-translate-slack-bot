@@ -18,8 +18,10 @@ def do_post(request):
     print("mention=" + mention)
     print("retweet=" + retweet)
 
+    if mention == "false" and text[0] == "@":  # メンションを除外
+        return "devto"
 
-    if "RT" in text or "@" in text:
+    if retweet == "false" and text[:2] == "RT":  # リツイートを除外
         return "devto"
 
     # text内のurlを取得
