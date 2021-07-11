@@ -1,6 +1,6 @@
 import json
 import requests
-from settings import *
+from settings import SLACK_WEBHOOK_URL
 from google.cloud import translate_v2 as translate
 
 translate_client = translate.Client()
