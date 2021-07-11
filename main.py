@@ -1,18 +1,27 @@
 import json
 import requests
-from settings import *
+from settings import SLACK_WEBHOOK_URL
 from google.cloud import translate_v2 as translate
 
 translate_client = translate.Client()
 
 
 def do_post(request):
-    text = request.form.get('text')  # type: str
     username = request.form.get('username')  # type: str
+    image = request.form.get('image')  # type: str
+    text = request.form.get('text')  # type: str
+    mention = request.form.get('mention')  # type: str
+    retweet = request.form.get('retweet')  # type: str
+    print("username=" + username)
+    print("image=" + image)
+    print("text=" + text)
+    print("mention=" + mention)
+    print("retweet=" + retweet)
 
-    print("text={}, username={}".format(text, username))
+    if mention == "false" and text[0] == "@":  # メンションを除外
+        return "devto"
 
-    if "RT" in text or "@" in text:
+    if retweet == "false" and text[:2] == "RT":  # リツイートを除外
         return "devto"
 
     # text内のurlを取得
@@ -27,10 +36,8 @@ def do_post(request):
     translated_text = result['translatedText']  # type: str
     print(translated_text)
 
-    icon_name = ":devto:"
-
     data = {  # type: dict
-        "text": "{} *{}*\n{}\n{}".format(icon_name, username, translated_text, url),
+        "text": "{} *{}*\n{}\n{}".format(image, username, translated_text, url),
         "unfurl_links": "true",
     }
     payload = json.dumps(data).encode("utf-8")  # type: json
